@@ -1,0 +1,32 @@
+{
+  "name": "shopsphere",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ShopSphere full-stack e-commerce learning platform",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w @shopsphere/customer-web\" \"npm run dev -w @shopsphere/admin-web\" \"npm run dev -w @shopsphere/api\"",
+    "dev:customer": "npm run dev -w @shopsphere/customer-web",
+    "dev:admin": "npm run dev -w @shopsphere/admin-web",
+    "dev:api": "npm run dev -w @shopsphere/api",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "prisma:generate": "npm run prisma:generate -w @shopsphere/api",
+    "prisma:migrate": "npm run prisma:migrate -w @shopsphere/api",
+    "docker:up": "docker compose up --build",
+    "docker:down": "docker compose down"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}
+
